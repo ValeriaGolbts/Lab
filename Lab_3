@@ -1,0 +1,22 @@
+import networkx as nx
+import numpy as np
+
+n = 47  # количество вершин
+p = 0.78  # вероятность появления ребра
+
+# Генерация графа 
+G = nx.erdos_renyi_graph(n, p)
+
+#for n in G.nodes():
+  #print(G.degree(n))
+
+# Вычисление средней степени вершины 
+a = 0
+for n in G.nodes():
+  a =a + G.degree(n)
+average_degree_computed = float(a)/len(G.nodes()) 
+print(f"Средняя степень, вычисленная в программе: {average_degree_computed:.2f}.") 
+
+# Вычисляем теоретическую среднюю степень
+average_degree_theoretical = p * (n - 1)
+print(f"Теоретическая средняя степень: {average_degree_theoretical:.2f}.")
